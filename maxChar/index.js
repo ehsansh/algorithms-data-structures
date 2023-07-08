@@ -3,7 +3,20 @@
 // maxChar("I loveeeeeee noodles") === "e"
 // maxChar("1337") === "3"
 
-function maxChar(str) {}
+function maxChar(str) {
+    let charCountObj = {};
+    let maxCharacter = '';
+    let maxNum = 0;
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        charCountObj[char] = charCountObj[char] + 1 || 1;
+        if (charCountObj[char] > maxNum) {
+            maxNum = charCountObj[char];
+            maxCharacter = char;
+        }
+    }
+    return maxCharacter;
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -28,16 +41,16 @@ function maxChar(str) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup("bdd");
+mocha.setup('bdd');
 const { assert } = chai;
 
-describe("Max Character", () => {
-  it("maxChar() finds the most frequently used character", () => {
-    assert.equal(maxChar("a"), "a");
-    assert.equal(maxChar("test"), "t");
-    assert.equal(maxChar("I loveeeeee noodles"), "e");
-    assert.equal(maxChar("1337"), "3");
-  });
+describe('Max Character', () => {
+    it('maxChar() finds the most frequently used character', () => {
+        assert.equal(maxChar('a'), 'a');
+        assert.equal(maxChar('test'), 't');
+        assert.equal(maxChar('I loveeeeee noodles'), 'e');
+        assert.equal(maxChar('1337'), '3');
+    });
 });
 
 mocha.run();
