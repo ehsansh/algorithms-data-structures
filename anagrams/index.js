@@ -23,8 +23,8 @@ function sanitizeString(str) {
         .toLowerCase()
         .trim();
 }
-
-function anagrams(stringA, stringB) {
+// O(n+m)
+function anagrams2(stringA, stringB) {
     stringA = sanitizeString(stringA);
     stringB = sanitizeString(stringB);
 
@@ -41,6 +41,17 @@ function anagrams(stringA, stringB) {
     }
 
     return true;
+}
+//time complexity for this solution is O(NLogN)
+function anagrams(stringA, stringB) {
+    stringA = sanitizeString(stringA);
+    stringB = sanitizeString(stringB);
+
+    if (stringA.length !== stringB.length) return false;
+
+    return (
+        stringA.split('').sort().join('') === stringB.split('').sort().join('')
+    );
 }
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
