@@ -66,6 +66,24 @@ class LinkedList {
         }
         return currentNode;
     }
+    set(index, data) {
+        if (index < 0 || index > this.length - 1) return false;
+        let currentNode = this.get(index);
+        currentNode.data = data;
+        return true;
+    }
+    remove(index) {
+        if (index < 0 || index > this.length - 1) return false;
+        if (index === 0) {
+            let targetNode = this.head;
+            return this.shift();
+        }
+        let prevNode = this.get(index - 1);
+        let targetNode = prevNode.next;
+        prevNode.next = targetNode.next;
+        this.length--;
+        return targetNode;
+    }
 }
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
