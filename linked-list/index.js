@@ -38,6 +38,18 @@ class LinkedList {
         this.length--;
         return node;
     }
+    pop() {
+        if (this.length === 0) return;
+        if (this.length === 1) return this.shift();
+        let lastNode = this.getLast();
+        let currentNode = this.head;
+        while (currentNode.next !== lastNode) {
+            currentNode = currentNode.next;
+        }
+        currentNode.next = null;
+        this.length--;
+        return lastNode;
+    }
 }
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
