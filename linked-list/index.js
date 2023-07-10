@@ -20,6 +20,13 @@ class LinkedList {
     getFirst() {
         return this.head;
     }
+    getLast() {
+        let currentNode = this.head;
+        while (currentNode && currentNode.next) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
+    }
 }
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
@@ -80,7 +87,7 @@ describe('getFirst()', () => {
     });
 });
 
-describe.skip('getLast()', () => {
+describe('getLast()', () => {
     it('returns the last node in linked list.', () => {
         const l = new LinkedList();
         l.unshift(1);
