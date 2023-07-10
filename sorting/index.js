@@ -1,8 +1,20 @@
 // Implement a swap helper function that we will use in both BS and SS
-function swap(arr, i, j) {}
+function swap(arr, i, j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+    return arr;
+}
 
 //bubbleSort works by having sorted data accumulate at end of array
-function bubbleSort(arr) {}
+function bubbleSort(arr) {
+    for (let j = 0; j < arr.length; j++) {
+        for (let i = 0; i < arr.length - j; i++) {
+            if (arr[i] > arr[i + 1]) arr = swap(arr, i, i + 1);
+        }
+    }
+    return arr;
+}
 
 //selectionSort works by having sorted data accumulate at start of array
 function selectionSort(arr) {}
@@ -30,27 +42,30 @@ function selectionSort(arr) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup("bdd");
+mocha.setup('bdd');
 const { assert } = chai;
 
-describe("swap()", () => {
-  it("swaps values in an array when provided with 2 indexes.", () => {
-    const arr = [13, 2, 4];
-    swap(arr, 0, 1);
-    assert.deepEqual(arr, [2, 13, 4]);
-  });
+describe('swap()', () => {
+    it('swaps values in an array when provided with 2 indexes.', () => {
+        const arr = [13, 2, 4];
+        swap(arr, 0, 1);
+        assert.deepEqual(arr, [2, 13, 4]);
+    });
 });
 
-describe.skip("Bubble Sort", () => {
-  it("sorts an array", () => {
-    assert.deepEqual(bubbleSort([5, 1, 3, 7, 6, 2, 4]), [1, 2, 3, 4, 5, 6, 7]);
-  });
+describe('Bubble Sort', () => {
+    it('sorts an array', () => {
+        assert.deepEqual(
+            bubbleSort([5, 1, 3, 7, 6, 2, 4]),
+            [1, 2, 3, 4, 5, 6, 7]
+        );
+    });
 });
 
-describe.skip("Selection Sort", () => {
-  it("sorts an array", () => {
-    assert.deepEqual(selectionSort([5, 1, 3, 2, 4]), [1, 2, 3, 4, 5]);
-  });
+describe.skip('Selection Sort', () => {
+    it('sorts an array', () => {
+        assert.deepEqual(selectionSort([5, 1, 3, 2, 4]), [1, 2, 3, 4, 5]);
+    });
 });
 
 mocha.run();
