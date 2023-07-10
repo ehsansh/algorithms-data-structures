@@ -17,6 +17,9 @@ class LinkedList {
         this.length++;
         this.head = newNode;
     }
+    getFirst() {
+        return this.head;
+    }
 }
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
@@ -66,7 +69,7 @@ describe('unshift(data)', () => {
     });
 });
 
-describe.skip('getFirst()', () => {
+describe('getFirst()', () => {
     it('returns the first node in linked list.', () => {
         const l = new LinkedList();
         assert.equal(l.getFirst(), null);
