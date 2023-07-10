@@ -27,6 +27,10 @@ class LinkedList {
         }
         return currentNode;
     }
+    clear() {
+        this.head = null;
+        this.length = 0;
+    }
 }
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
@@ -101,7 +105,7 @@ describe('getLast()', () => {
     });
 });
 
-describe.skip('clear()', () => {
+describe('clear()', () => {
     it('clears out the linked list and resets length to 0.', () => {
         const l = new LinkedList();
         assert.equal(l.length, 0);
