@@ -84,6 +84,18 @@ class LinkedList {
         this.length--;
         return targetNode;
     }
+    insert(index, data) {
+        if (index < 0 || index > this.length - 1) return false;
+        if (index === 0) {
+            this.unshift(data);
+            return true;
+        }
+        let prevNode = this.get(index - 1);
+        let targetNode = prevNode.next;
+        prevNode.next = new Node(data, targetNode);
+        this.length++;
+        return true;
+    }
 }
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
