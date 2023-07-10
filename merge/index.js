@@ -5,7 +5,32 @@
 // merge([1,5], [4,6,7]) === [1,4,5,6,7]
 // merge([4,6,7], [1,5]) === [1,4,5,6,7]
 
-function merge(sortedArr1, sortedArr2) {}
+function merge(sortedArr1, sortedArr2) {
+    let index1 = 0;
+    let index2 = 0;
+    let result = [];
+    while (index1 < sortedArr1.length && index2 < sortedArr2.length) {
+        if (sortedArr1[index1] < sortedArr2[index2]) {
+            result.push(sortedArr1[index1]);
+            index1++;
+        } else {
+            result.push(sortedArr2[index2]);
+            index2++;
+        }
+    }
+
+    while (index1 < sortedArr1.length) {
+        result.push(sortedArr1[index1]);
+        index1++;
+    }
+
+    while (index2 < sortedArr2.length) {
+        result.push(sortedArr2[index2]);
+        index2++;
+    }
+
+    return result;
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -30,29 +55,29 @@ function merge(sortedArr1, sortedArr2) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup("bdd");
+mocha.setup('bdd');
 const { assert } = chai;
 
-describe("merge()", () => {
-  it("merge([1, 3], [2, 4]) returns [1, 2, 3, 4]", () => {
-    assert.deepEqual(merge([1, 3], [2, 4]), [1, 2, 3, 4]);
-  });
-  it("merge([1, 5], [4, 6, 7]) returns [1, 4, 5, 6, 7]", () => {
-    assert.deepEqual(merge([1, 5], [4, 6, 7]), [1, 4, 5, 6, 7]);
-  });
-  it("merge([4, 6, 7], [1, 5]) returns [1, 4, 5, 6, 7]", () => {
-    assert.deepEqual(merge([4, 6, 7], [1, 5]), [1, 4, 5, 6, 7]);
-  });
-  it("merge([], []) returns []", () => {
-    assert.deepEqual(merge([], []), []);
-  });
-  it("merge returns new array and does NOT modify input arrays", () => {
-    const a1 = [1, 3];
-    const a2 = [2, 4];
-    merge(a1, a2);
-    assert.deepEqual(a1, [1, 3]);
-    assert.deepEqual(a2, [2, 4]);
-  });
+describe('merge()', () => {
+    it('merge([1, 3], [2, 4]) returns [1, 2, 3, 4]', () => {
+        assert.deepEqual(merge([1, 3], [2, 4]), [1, 2, 3, 4]);
+    });
+    it('merge([1, 5], [4, 6, 7]) returns [1, 4, 5, 6, 7]', () => {
+        assert.deepEqual(merge([1, 5], [4, 6, 7]), [1, 4, 5, 6, 7]);
+    });
+    it('merge([4, 6, 7], [1, 5]) returns [1, 4, 5, 6, 7]', () => {
+        assert.deepEqual(merge([4, 6, 7], [1, 5]), [1, 4, 5, 6, 7]);
+    });
+    it('merge([], []) returns []', () => {
+        assert.deepEqual(merge([], []), []);
+    });
+    it('merge returns new array and does NOT modify input arrays', () => {
+        const a1 = [1, 3];
+        const a2 = [2, 4];
+        merge(a1, a2);
+        assert.deepEqual(a1, [1, 3]);
+        assert.deepEqual(a2, [2, 4]);
+    });
 });
 
 mocha.run();
