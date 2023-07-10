@@ -31,6 +31,13 @@ class LinkedList {
         this.head = null;
         this.length = 0;
     }
+    shift() {
+        if (this.head === null) return;
+        let node = this.head;
+        this.head = this.head.next;
+        this.length--;
+        return node;
+    }
 }
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
@@ -119,7 +126,7 @@ describe('clear()', () => {
     });
 });
 
-describe.skip('shift()', () => {
+describe('shift()', () => {
     it('removes AND returns first node, updates length for linked list w/ one node.', () => {
         const l = new LinkedList();
         l.unshift(1);
@@ -146,7 +153,7 @@ describe.skip('shift()', () => {
     });
 });
 
-describe.skip('pop()', () => {
+describe('pop()', () => {
     it('removes AND returns last node, decreases length.', () => {
         const l = new LinkedList();
         l.unshift('b');
@@ -169,7 +176,7 @@ describe.skip('pop()', () => {
     });
 });
 
-describe.skip('push(data)', () => {
+describe('push(data)', () => {
     it('adds to the end of the list and increases length.', () => {
         const l = new LinkedList();
         l.unshift(1);
@@ -186,7 +193,7 @@ describe.skip('push(data)', () => {
     });
 });
 
-describe.skip('get(index)', () => {
+describe('get(index)', () => {
     it('returns null on negative or out of bounds index.', () => {
         const l = new LinkedList();
         l.push('Kevin');
@@ -205,7 +212,7 @@ describe.skip('get(index)', () => {
     });
 });
 
-describe.skip('set(index, data)', () => {
+describe('set(index, data)', () => {
     it('returns falsy value on out of bounds or negative index.', () => {
         const l = new LinkedList();
         l.push(2);
@@ -221,7 +228,7 @@ describe.skip('set(index, data)', () => {
     });
 });
 
-describe.skip('remove(index)', () => {
+describe('remove(index)', () => {
     it('returns falsy value on out of bounds OR negative index.', () => {
         const l = new LinkedList();
         l.push(2);
@@ -254,7 +261,7 @@ describe.skip('remove(index)', () => {
     });
 });
 
-describe.skip('insert(index, data)', () => {
+describe('insert(index, data)', () => {
     it('returns false on index greater than length or negative index.', () => {
         const l = new LinkedList();
         assert.equal(l.insert(1, 'meow'), false);
